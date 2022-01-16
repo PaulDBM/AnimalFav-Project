@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+admin.site.register(TipoTienda)
+admin.site.register(Cupon)
+admin.site.register(TipoCupon)
+admin.site.register(CuponGenerado)
