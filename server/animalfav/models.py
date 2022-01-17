@@ -32,3 +32,18 @@ class CuponGenerado(models.Model):
     tipo_cupon = models.ForeignKey(TipoCupon, verbose_name="tipo_cupon", null=True, on_delete=models.RESTRICT)
     class Meta:
         db_table = 'cupon_generado'
+
+class Evento(models.Model):
+    nombre = models.CharField(max_length=50)
+    correo = models.CharField(max_length=40)
+    dia = models.DateTimeField()
+    duracion = models.CharField(max_length=30)
+    ubicación = models.CharField(max_length=100)
+
+class Recorrido(models.Model):
+    nombre = models.CharField(max_length=50)
+    correo = models.CharField(max_length=40)
+    dia = models.DateTimeField()
+    duracion = models.CharField(max_length=30)
+    ubicación = models.CharField(max_length=100)
+    descRecorrido = models.CharField(max_length=100)

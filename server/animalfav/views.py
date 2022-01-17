@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 from animalfav.serializers import *
-
+from rest_framework.viewsets import ModelViewSet
 
 # @api_view(['GET'])
 # def tipos_tienda(request):
@@ -41,3 +41,13 @@ def cupones(request):
 #             return JsonResponse(cupon_serializer.data, status=status.HTTP_201_CREATED)
 #         else:
 #             return JsonResponse(cupon_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class EventoView(ModelViewSet):
+
+    queryset = Evento.objects.all()
+    serializer_class = EventoSerializer
+
+class RecorridoView(ModelViewSet):
+
+    queryset = Recorrido.objects.all()
+    serializer_class = RecorridoSerializer
