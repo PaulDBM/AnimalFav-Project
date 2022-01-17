@@ -21,12 +21,12 @@ def cupones(request):
         return JsonResponse(cupon_serializer.data, safe=False)
 
 
-# @api_view(['GET'])
-# def tipos_cupon(request):
-#     if request.method == 'GET':
-#         tipos_cupon = TipoCupon.objects.all()
-#         tipos_cupon_serializer = TipoCuponSerializer(tipos_cupon, many=True)
-#         return JsonResponse(tipos_cupon_serializer.data, safe=False)
+@api_view(['GET'])
+def tipos_cupon(request):
+    if request.method == 'GET':
+        tipos_cupon = TipoCupon.objects.all()
+        tipos_cupon_serializer = TipoCuponSerializer(tipos_cupon, many=True)
+        return JsonResponse(tipos_cupon_serializer.data, safe=False)
 
 
 # @api_view(['POST'])

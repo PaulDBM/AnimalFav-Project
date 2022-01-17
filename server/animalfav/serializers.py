@@ -14,10 +14,10 @@ class CuponSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-#class TipoCuponSerializer(serializers.ModelSerializer):
-#    class Meta:
-#        model = TipoCupon
-#        fields = '__all__'
+class TipoCuponSerializer(serializers.ModelSerializer):
+   class Meta:
+       model = TipoCupon
+       fields = '__all__'
 
 
 #class CuponGeneradoSerializer(serializers.ModelSerializer):
@@ -40,6 +40,7 @@ class EventoSerializer(serializers.ModelSerializer):
         )
 
         return newEvento
+
 
 class RecorridoSerializer(serializers.ModelSerializer):
     class Meta:
