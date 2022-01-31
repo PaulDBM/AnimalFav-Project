@@ -36,7 +36,7 @@ class EventoSerializer(serializers.ModelSerializer):
             correo = data.get("correo"),
             dia = data.get("dia"),
             duracion = data.get("duracion"),
-            ubicación = data.get("ubicación")
+            ubicacion = data.get("ubicacion")
         )
 
         return newEvento
@@ -53,7 +53,7 @@ class RecorridoSerializer(serializers.ModelSerializer):
             correo = data.get("correo"),
             dia = data.get("dia"),
             duracion = data.get("duracion"),
-            ubicación = data.get("ubicación"),
+            ubicación = data.get("ubicacion"),
             descRecorrido = data.get("descRecorrido")
         )
 

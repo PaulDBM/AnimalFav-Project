@@ -36,14 +36,14 @@ class CuponGenerado(models.Model):
 class Evento(models.Model):
     nombre = models.CharField(max_length=50)
     correo = models.CharField(max_length=40)
-    dia = models.DateTimeField()
+    dia = models.CharField(max_length=40)
     duracion = models.CharField(max_length=30)
-    ubicación = models.CharField(max_length=100)
+    ubicacion = models.CharField(max_length=100)
 
 class Recorrido(models.Model):
     nombre = models.CharField(max_length=50)
     correo = models.CharField(max_length=40)
-    dia = models.DateTimeField()
+    dia = models.CharField(max_length=40, default="none")
     duracion = models.CharField(max_length=30)
-    ubicación = models.CharField(max_length=100)
+    ubicacion = models.CharField(max_length=100)
     descRecorrido = models.CharField(max_length=100)

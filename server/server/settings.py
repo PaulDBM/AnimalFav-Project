@@ -6,9 +6,15 @@ SECRET_KEY = 'django-insecure-7pn)37xf&svh%6g)5y)^)7elgan0^!e%_k8d*#247j17oy&kyo
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.0.2.2']
+ALLOWED_HOSTS = ['10.0.2.2',
+'localhost'
+]
 
-CORS_ALLOWED_ORIGINS = ['http://locahost:52124']
+CORS_ALLOWED_ORIGINS = ['http://locahost:52124',
+'http://10.0.2.2:8000',
+'http://locahost:56497',
+'http://locahost:8000'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -56,8 +62,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'animalfav',
-        'USER': 'dbAdminAnimalFav',
-        'PASSWORD': '2k22%AFav%',
+        'USER': 'root',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': 3306,
     }
