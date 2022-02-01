@@ -20,6 +20,17 @@ class TipoCuponSerializer(serializers.ModelSerializer):
        fields = '__all__'
 
 
+class CuponCanjeadoSerializer(serializers.ModelSerializer):
+   class Meta:
+       model = CuponGenerado
+       fields = ('canjeado',
+                 'codigo',
+                 'expiracion',
+                 'fecha_canjeo',
+                 'cupon',
+                 'tipo_cupon')
+
+
 class CuponGeneradoSerializer(serializers.ModelSerializer):
    class Meta:
        model = CuponGenerado

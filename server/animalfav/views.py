@@ -41,6 +41,18 @@ def cupon_generado(request):
             return JsonResponse(cupon_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['PUT'])
+def canjeo_cupon(request, code):
+    if request.method == 'PUT':
+        cupon = CuponGenerado.objects.get(codigo=code)
+        update = JSONParser().parse(request)
+        update_serializer = CuponCanjeadoSerializer(cupon, data=update)
+        if update_serializer.is_valid():
+            update_serializer.save()
+            return JsonResponse(update_serializer.data, status=status.HTTP_200_OK)
+        return JsonResponse(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 class EventoView(ModelViewSet):
 
     queryset = Evento.objects.all()

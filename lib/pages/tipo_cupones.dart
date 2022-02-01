@@ -148,8 +148,8 @@ class _TiposCuponPageState extends State<TiposCuponPage> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          CodigoBarra(
-                                                              codigo: code)),
+                                                          CodigoBarraPage(
+                                                              cupon: generado)),
                                                 )
                                               }
                                             else if (data.nombre
@@ -159,7 +159,8 @@ class _TiposCuponPageState extends State<TiposCuponPage> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          Token(codigo: code)),
+                                                          TokenPage(
+                                                              cupon: generado)),
                                                 )
                                               }
                                             else if (data.nombre.contains('QR'))
@@ -168,8 +169,8 @@ class _TiposCuponPageState extends State<TiposCuponPage> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          CodigoQR(
-                                                              codigo: code)),
+                                                          CodigoQRPage(
+                                                              cupon: generado)),
                                                 )
                                               }
                                           }

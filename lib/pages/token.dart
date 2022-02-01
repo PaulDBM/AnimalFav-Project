@@ -1,8 +1,10 @@
+import 'package:animal_fav/models/cupon_generado.dart';
 import 'package:flutter/material.dart';
 
-class Token extends StatelessWidget {
-  final String codigo;
-  const Token({Key? key, required this.codigo}) : super(key: key);
+class TokenPage extends StatelessWidget {
+  const TokenPage({Key? key, required this.cupon}) : super(key: key);
+
+  final CuponGenerado cupon;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +22,40 @@ class Token extends StatelessWidget {
                   style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
                 ),
               ),
-              Text(
-                codigo,
-                style: const TextStyle(fontSize: 24.0),
-              )
+              Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    cupon.codigo,
+                    style: const TextStyle(fontSize: 24.0),
+                  )),
+              ElevatedButton(
+                onPressed: () {
+                  cupon.canjearCupon().then((res) => {
+                        if (res.statusCode == 200)
+                          {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                                    content: Text(
+                              'Cupón canjeado',
+                              style: TextStyle(fontSize: 18.0),
+                            ))),
+                            Navigator.of(context)
+                                .popUntil((route) => route.isFirst)
+                          }
+                        else
+                          {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                                    content: Text(
+                              'Error al canjear el cupón',
+                              style: TextStyle(fontSize: 18.0),
+                            )))
+                          }
+                      });
+                },
+                child: const Text('Marcar cupón como canjeado',
+                    style: TextStyle(fontSize: 18.0)),
+              ),
             ],
           )),
         ));
