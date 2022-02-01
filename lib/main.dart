@@ -117,16 +117,11 @@ class _MyHomePageState extends State<MyHomePage> {
               TextButton(
                 style: TextButton.styleFrom(
                     primary: Theme.of(context).colorScheme.onPrimary),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MyHomePage(
-                              title: 'AnimalFav',
-                            )),
-                  );
-                },
-                child: const Text('Home'),
+                onPressed: () {},
+                child: const Text(
+                  'Home',
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
               TextButton(
                 style: TextButton.styleFrom(
@@ -186,32 +181,29 @@ class _MyHomePageState extends State<MyHomePage> {
               // horizontal).
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'AnimalFav',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24.0),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Eventos",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
-                            )
-                          ],
-                        ),
-                      ]),
-                ),
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  const Text(
+                    'AnimalFav',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
+                      Text(
+                        "Eventos",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      )
+                    ],
+                  ),
+                ]),
                 FutureBuilder<List<EventoA>>(
                   future: eventos,
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (!snapshot.hasData)
+                    if (!snapshot.hasData) {
                       return const CircularProgressIndicator();
+                    }
                     return ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
@@ -250,8 +242,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const Text(
+                          children: const [
+                            Text(
                               "Recorridos",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
@@ -263,8 +255,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 FutureBuilder<List<RecorridoA>>(
                   future: recorridos,
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (!snapshot.hasData)
+                    if (!snapshot.hasData) {
                       return const CircularProgressIndicator();
+                    }
                     return ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
@@ -485,58 +478,60 @@ class Recorrido extends StatelessWidget {
     final descRecorridoControler = TextEditingController();
 
     return Scaffold(
-        appBar: AppBar(title: Text('Creación de Recorridos'), actions: <Widget>[
-          TextButton(
-            style: TextButton.styleFrom(
-                primary: Theme.of(context).colorScheme.onPrimary),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MyHomePage(
-                          title: 'AnimalFav',
-                        )),
-              );
-            },
-            child: const Text('Home'),
-          ),
-          TextButton(
-            style: TextButton.styleFrom(
-                primary: Theme.of(context).colorScheme.onPrimary),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Evento()),
-              );
-            },
-            child: const Text('Eventos'),
-          ),
-          TextButton(
-            style: TextButton.styleFrom(
-                primary: Theme.of(context).colorScheme.onPrimary),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Recorrido()),
-              );
-            },
-            child: const Text('Recorridos'),
-          ),
-          TextButton(
-            style: TextButton.styleFrom(
-                primary: Theme.of(context).colorScheme.onPrimary),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const CuponesPage(
-                          title: 'AnimalFav',
-                        )),
-              );
-            },
-            child: const Text('Cupones'),
-          ),
-        ]),
+        appBar: AppBar(
+            title: const Text('Creación de Recorridos'),
+            actions: <Widget>[
+              TextButton(
+                style: TextButton.styleFrom(
+                    primary: Theme.of(context).colorScheme.onPrimary),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyHomePage(
+                              title: 'AnimalFav',
+                            )),
+                  );
+                },
+                child: const Text('Home'),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                    primary: Theme.of(context).colorScheme.onPrimary),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Evento()),
+                  );
+                },
+                child: const Text('Eventos'),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                    primary: Theme.of(context).colorScheme.onPrimary),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Recorrido()),
+                  );
+                },
+                child: const Text('Recorridos'),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                    primary: Theme.of(context).colorScheme.onPrimary),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CuponesPage(
+                              title: 'AnimalFav',
+                            )),
+                  );
+                },
+                child: const Text('Cupones'),
+              ),
+            ]),
         body: SingleChildScrollView(
           child: Center(
             child: Padding(
@@ -589,7 +584,7 @@ class Recorrido extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(items: [
+        bottomNavigationBar: BottomNavigationBar(items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.support_agent), label: 'Soporte'),
           BottomNavigationBarItem(
