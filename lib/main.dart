@@ -1,6 +1,4 @@
 import 'dart:convert';
-//import 'dart:developer';
-
 import 'package:animal_fav/models/evento.dart';
 import 'package:animal_fav/models/recorrido.dart';
 import 'package:animal_fav/pages/cupones.dart';
@@ -75,7 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
       recorridos = items.map<RecorridoA>((json) {
         return RecorridoA.fromJson(json);
       }).toList();
-      //log(recorridos.toString());
     } else {
       recorridos = [];
     }
@@ -91,7 +88,6 @@ class _MyHomePageState extends State<MyHomePage> {
       eventos = items.map<EventoA>((json) {
         return EventoA.fromJson(json);
       }).toList();
-      //log(eventos.toString());
     } else {
       eventos = [];
     }
@@ -181,23 +177,28 @@ class _MyHomePageState extends State<MyHomePage> {
               // horizontal).
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-                  const Text(
-                    'AnimalFav',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      Text(
-                        "Eventos",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      )
-                    ],
-                  ),
-                ]),
+                Container(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'AnimalFav',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 24.0),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Text(
+                              "Eventos",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            )
+                          ],
+                        ),
+                      ]),
+                ),
                 FutureBuilder<List<EventoA>>(
                   future: eventos,
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -352,37 +353,26 @@ class Evento extends StatelessWidget {
     final ubicacionController = TextEditingController();
 
     return Scaffold(
-        appBar:
-            AppBar(title: const Text('Creación de Eventos'), actions: <Widget>[
+        appBar: AppBar(actions: <Widget>[
           TextButton(
             style: TextButton.styleFrom(
                 primary: Theme.of(context).colorScheme.onPrimary),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MyHomePage(
-                          title: 'AnimalFav',
-                        )),
-              );
+              Navigator.pop(context);
             },
             child: const Text('Home'),
           ),
           TextButton(
             style: TextButton.styleFrom(
                 primary: Theme.of(context).colorScheme.onPrimary),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Evento()),
-              );
-            },
-            child: const Text('Eventos'),
+            onPressed: () {},
+            child: const Text('Eventos', style: TextStyle(color: Colors.black)),
           ),
           TextButton(
             style: TextButton.styleFrom(
                 primary: Theme.of(context).colorScheme.onPrimary),
             onPressed: () {
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Recorrido()),
@@ -394,11 +384,12 @@ class Evento extends StatelessWidget {
             style: TextButton.styleFrom(
                 primary: Theme.of(context).colorScheme.onPrimary),
             onPressed: () {
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => const CuponesPage(
-                          title: 'AnimalFav',
+                          title: 'Cupones disponibles',
                         )),
               );
             },
@@ -478,60 +469,50 @@ class Recorrido extends StatelessWidget {
     final descRecorridoControler = TextEditingController();
 
     return Scaffold(
-        appBar: AppBar(
-            title: const Text('Creación de Recorridos'),
-            actions: <Widget>[
-              TextButton(
-                style: TextButton.styleFrom(
-                    primary: Theme.of(context).colorScheme.onPrimary),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MyHomePage(
-                              title: 'AnimalFav',
-                            )),
-                  );
-                },
-                child: const Text('Home'),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                    primary: Theme.of(context).colorScheme.onPrimary),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Evento()),
-                  );
-                },
-                child: const Text('Eventos'),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                    primary: Theme.of(context).colorScheme.onPrimary),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Recorrido()),
-                  );
-                },
-                child: const Text('Recorridos'),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                    primary: Theme.of(context).colorScheme.onPrimary),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const CuponesPage(
-                              title: 'AnimalFav',
-                            )),
-                  );
-                },
-                child: const Text('Cupones'),
-              ),
-            ]),
+        appBar: AppBar(actions: <Widget>[
+          TextButton(
+            style: TextButton.styleFrom(
+                primary: Theme.of(context).colorScheme.onPrimary),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('Home'),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+                primary: Theme.of(context).colorScheme.onPrimary),
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Evento()),
+              );
+            },
+            child: const Text('Eventos'),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+                primary: Theme.of(context).colorScheme.onPrimary),
+            onPressed: () {},
+            child:
+                const Text('Recorridos', style: TextStyle(color: Colors.black)),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+                primary: Theme.of(context).colorScheme.onPrimary),
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const CuponesPage(
+                          title: 'Cupones disponibles',
+                        )),
+              );
+            },
+            child: const Text('Cupones'),
+          ),
+        ]),
         body: SingleChildScrollView(
           child: Center(
             child: Padding(
