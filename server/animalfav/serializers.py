@@ -2,10 +2,10 @@ from rest_framework import serializers
 from .models import *
 
 
-#class TipoTiendaSerializer(serializers.ModelSerializer):
-#    class Meta:
-#        model = TipoTienda
-#        fields = '__all__'
+class TipoTiendaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TipoTienda
+        fields = '__all__'
 
 
 class CuponSerializer(serializers.ModelSerializer):
@@ -20,10 +20,13 @@ class TipoCuponSerializer(serializers.ModelSerializer):
        fields = '__all__'
 
 
-#class CuponGeneradoSerializer(serializers.ModelSerializer):
-#    class Meta:
-#        model = CuponGenerado
-#        fields = '__all__'
+class CuponGeneradoSerializer(serializers.ModelSerializer):
+   class Meta:
+       model = CuponGenerado
+       fields = ('codigo',
+                 'expiracion',
+                 'cupon',
+                 'tipo_cupon')
 
 class EventoSerializer(serializers.ModelSerializer):
     class Meta:

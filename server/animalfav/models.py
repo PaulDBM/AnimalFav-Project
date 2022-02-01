@@ -26,6 +26,7 @@ class TipoCupon(models.Model):
 
 class CuponGenerado(models.Model):
     canjeado = models.BooleanField(verbose_name="canjeado", default=False)
+    codigo = models.CharField(verbose_name="codigo", max_length=255, default='')
     expiracion = models.DateTimeField(verbose_name="expiracion", null=True)
     fecha_canjeo = models.DateTimeField(verbose_name="fecha_canjeo", null=True)
     cupon =  models.ForeignKey(Cupon, verbose_name="cupon", null=True, on_delete=models.RESTRICT)
