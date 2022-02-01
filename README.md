@@ -15,8 +15,8 @@ _Proyecto Final - Lenguajes de Programación_
 
 - Presentación tantos de eventos como de recorridos
 - Creación de eventos y recorridos
-- Presentación de código de descuento para las tiendas (código único | token | código de barra)
-- Presentación de las tiendas en donde pueden ser utilizados los cupones
+- Presentación de cupones promocionales con su respectivo tipo de tienda.
+- Presentación de cupones generados de acuerdo al tipo de cupón (Código de Barra, Código QR, Token o Código único).
 
 ### Librerias Frontend
 
